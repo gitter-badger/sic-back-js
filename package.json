@@ -1,0 +1,17 @@
+{
+  "name": "sic-back-js",
+  "version": "0.1.0",
+  "description": "Sfeir Innovation Challenge Back JS",
+  "main": "server.js",
+  "scripts": {
+    "start": "babel-node ./server.js"
+  },
+  "author": "avandendaele",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.21"
+  }
+}
