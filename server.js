@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import jwt from 'express-jwt';
+import { User } from './models'
 
 let app = express();
 
@@ -28,5 +29,11 @@ app.use(function (err, req, res, next) {
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
+
+app.get('/users', (req, res) => {
+    User.run().then((users) => {
+      res.status(200).send(users)
+    })
+})
 
 app.listen(3000);
