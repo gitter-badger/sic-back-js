@@ -9,9 +9,8 @@
   "author": "avandendaele",
   "license": "MIT",
   "dependencies": {
-    "cors": "^2.7.1",
     "express": "^4.13.3",
-    "express-jwt": "^3.0.1"
+    "thinky": "^2.1.6"
   },
   "devDependencies": {
     "babel-core": "^5.8.21"
