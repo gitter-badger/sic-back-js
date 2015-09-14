@@ -1,5 +1,7 @@
 import express from 'express';
-import { User } from './models'
+import graphQLHTTP from 'express-graphql';
+import { graphql } from 'graphql';
+import schema from './schema';
 
 let app = express();
 
@@ -12,10 +14,7 @@ app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
-app.get('/users', (req, res) => {
-    User.run().then((users) => {
-      res.status(200).send(users)
-    })
-})
+// GRAPHQL
+app.use('/graphql', graphQLHTTP({schema: schema, pretty: true}));
 
 app.listen(3000);
