@@ -10,6 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
+    "express-graphql": "^0.3.0",
+    "graphql": "^0.4.3",
     "thinky": "^2.1.6"
   },
   "devDependencies": {
