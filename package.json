@@ -4,17 +4,21 @@
   "description": "Sfeir Innovation Challenge Back JS",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node ./server.js"
+    "start": "node index.js"
   },
   "author": "avandendaele",
   "license": "MIT",
-  "dependencies": {
-    "express": "^4.13.3",
-    "express-graphql": "^0.3.0",
-    "graphql": "^0.4.3",
-    "thinky": "^2.1.6"
-  },
   "devDependencies": {
-    "babel-core": "^5.8.21"
+    "babel-core": "^6.0.0",
+    "babel-polyfill": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-0": "^6.0.0"
+  },
+  "dependencies": {
+    "@risingstack/graffiti-mongoose": "^5.0.1",
+    "express": "^4.13.3",
+    "express-graphql": "^0.4.5",
+    "graphql": "^0.4.14",
+    "mongoose": "^4.3.3"
   }
 }
