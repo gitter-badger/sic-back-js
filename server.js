@@ -1,9 +1,8 @@
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
-import { graphql } from 'graphql';
-import schema from './schema';
+import schema from './graphql';
 
-let app = express();
+const app = express();
 
 // Clean up some headers
 app.set('x-powered-by', false);
@@ -15,6 +14,6 @@ app.get('/', function (req, res) {
 });
 
 // GRAPHQL
-app.use('/graphql', graphQLHTTP({schema: schema, pretty: true}));
+app.use('/graphql', graphQLHTTP({ schema: schema, pretty: true, graphiql: true }));
 
 app.listen(3000);
