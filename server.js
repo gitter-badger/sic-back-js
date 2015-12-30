@@ -1,8 +1,18 @@
+import mongoose from 'mongoose';
+
 import express from 'express';
 import cors from 'cors';
 import graphQLHTTP from 'express-graphql';
+
 import schema from './data/schema';
 import introspectedSchema from './data/schema.json'
+
+
+const APP_PORT = 3000;
+const MONGODB_URI = 'mongodb://localhost/sic';
+
+mongoose.connect('mongodb://localhost/sic')
+console.log(`Connecting to mongodb: ${MONGODB_URI}`);
 
 const app = express();
 
@@ -28,6 +38,9 @@ app.get('/schema', (req, res) => {
 app.use('/graphql', graphQLHTTP({ schema: schema, pretty: true, graphiql: true }));
 
 app.listen(3000, (err) => {
-  if (err)
+  if (err) {
     throw err;
+  } else {
+    console.log(`App is now running on http://localhost:${APP_PORT}`);
+  }
 });
