@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import graphQLHTTP from 'express-graphql';
 import schema from './data/schema';
+import introspectedSchema from './data/schema.json'
 
 const app = express();
 
@@ -20,8 +21,7 @@ app.get('/', function (req, res) {
 // Schema
 app.get('/schema', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  graphql(schema, introspectionQuery)
-  .then((r) => res.send(r), () => res.err(500));
+  res.send(introspectedSchema);
 })
 
 // GRAPHQL
