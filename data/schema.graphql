@@ -1,0 +1,220 @@
+input addTransferInput {
+  from: String
+  to: String
+  amount: Float
+  currency: String
+  status: String
+  communication: String
+  date: ID
+  clientMutationId: String!
+}
+
+type addTransferPayload {
+  viewer: Viewer
+  changedTransferEdge: changedTransferEdge
+  clientMutationId: String!
+}
+
+input addUserInput {
+  firstName: String
+  lastName: String
+  clientMutationId: String!
+}
+
+type addUserPayload {
+  viewer: Viewer
+  changedUserEdge: changedUserEdge
+  clientMutationId: String!
+}
+
+type changedTransferEdge {
+  node: changedTransferNode
+  cursor: String!
+}
+
+type changedTransferNode {
+  from: String
+  to: String
+  amount: Float
+  currency: String
+  status: String
+  communication: String
+  date: date
+  _id: ID
+  id: ID!
+}
+
+type changedUserEdge {
+  node: changedUserNode
+  cursor: String!
+}
+
+type changedUserNode {
+  firstName: String
+  lastName: String
+  _id: ID
+  id: ID!
+}
+
+type date {
+  due: Date
+}
+
+scalar Date
+
+input deleteTransferInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type deleteTransferPayload {
+  viewer: Viewer
+  ok: Boolean
+  id: ID!
+  clientMutationId: String!
+}
+
+input deleteUserInput {
+  id: ID!
+  clientMutationId: String!
+}
+
+type deleteUserPayload {
+  viewer: Viewer
+  ok: Boolean
+  id: ID!
+  clientMutationId: String!
+}
+
+interface Node {
+  id: ID!
+}
+
+enum orderByTransfer {
+  FROM_ASC
+  FROM_DESC
+  TO_ASC
+  TO_DESC
+  AMOUNT_ASC
+  AMOUNT_DESC
+  CURRENCY_ASC
+  CURRENCY_DESC
+  STATUS_ASC
+  STATUS_DESC
+  COMMUNICATION_ASC
+  COMMUNICATION_DESC
+  _ID_ASC
+  _ID_DESC
+}
+
+enum orderByUser {
+  FIRSTNAME_ASC
+  FIRSTNAME_DESC
+  LASTNAME_ASC
+  LASTNAME_DESC
+  _ID_ASC
+  _ID_DESC
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type RootMutation {
+  addUser(input: addUserInput!): addUserPayload
+  updateUser(input: updateUserInput!): updateUserPayload
+  deleteUser(input: deleteUserInput!): deleteUserPayload
+  addTransfer(input: addTransferInput!): addTransferPayload
+  updateTransfer(input: updateTransferInput!): updateTransferPayload
+  deleteTransfer(input: deleteTransferInput!): deleteTransferPayload
+}
+
+type RootQuery {
+  viewer: Viewer
+  node(id: ID!): Node
+  user(id: ID!): User
+  users(id: [ID], ids: [ID], orderBy: orderByUser, firstName: String, lastName: String, _id: ID): [User]
+  transfer(id: ID!): Transfer
+  transfers(id: [ID], ids: [ID], orderBy: orderByTransfer, from: String, to: String, amount: Float, currency: String, status: String, communication: String, _id: ID): [Transfer]
+}
+
+type Transfer implements Node {
+  from: String
+  to: String
+  amount: Float
+  currency: String
+  status: String
+  communication: String
+  date: date
+  _id: ID
+  id: ID!
+}
+
+type TransferConnection {
+  pageInfo: PageInfo!
+  edges: [TransferEdge]
+  count: Float
+}
+
+type TransferEdge {
+  node: Transfer
+  cursor: String!
+}
+
+input updateTransferInput {
+  from: String
+  to: String
+  amount: Float
+  currency: String
+  status: String
+  communication: String
+  date: ID
+  id: ID!
+  clientMutationId: String!
+}
+
+type updateTransferPayload {
+  changedTransfer: Transfer
+  clientMutationId: String!
+}
+
+input updateUserInput {
+  firstName: String
+  lastName: String
+  id: ID!
+  clientMutationId: String!
+}
+
+type updateUserPayload {
+  changedUser: User
+  clientMutationId: String!
+}
+
+type User implements Node {
+  firstName: String
+  lastName: String
+  _id: ID
+  id: ID!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]
+  count: Float
+}
+
+type UserEdge {
+  node: User
+  cursor: String!
+}
+
+type Viewer implements Node {
+  id: ID!
+  users(after: String, first: Int, before: String, last: Int, orderBy: orderByUser, firstName: String, lastName: String, _id: ID): UserConnection
+  user(id: ID!): User
+  transfers(after: String, first: Int, before: String, last: Int, orderBy: orderByTransfer, from: String, to: String, amount: Float, currency: String, status: String, communication: String, _id: ID): TransferConnection
+  transfer(id: ID!): Transfer
+}
