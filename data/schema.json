@@ -255,6 +255,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "toAka",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "amount",
                   "description": null,
                   "type": {
@@ -286,6 +296,16 @@
                 },
                 {
                   "name": "communication",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "dueDate",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -539,6 +559,16 @@
                   "defaultValue": null
                 },
                 {
+                  "name": "toAka",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
                   "name": "amount",
                   "description": null,
                   "type": {
@@ -570,6 +600,16 @@
                 },
                 {
                   "name": "communication",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "dueDate",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -709,6 +749,22 @@
               "deprecationReason": null
             },
             {
+              "name": "accounts",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "_id",
               "description": null,
               "args": [],
@@ -798,6 +854,18 @@
               "deprecationReason": null
             },
             {
+              "name": "toAka",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "amount",
               "description": null,
               "args": [],
@@ -846,12 +914,12 @@
               "deprecationReason": null
             },
             {
-              "name": "date",
+              "name": "dueDate",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "date",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -901,39 +969,6 @@
           "kind": "SCALAR",
           "name": "Float",
           "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "date",
-          "description": null,
-          "fields": [
-            {
-              "name": "due",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Date",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Date",
-          "description": null,
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -1201,6 +1236,18 @@
               "deprecationReason": null
             },
             {
+              "name": "TOAKA_ASC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "TOAKA_DESC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "AMOUNT_ASC",
               "description": null,
               "isDeprecated": false,
@@ -1244,6 +1291,18 @@
             },
             {
               "name": "COMMUNICATION_DESC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "DUEDATE_ASC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "DUEDATE_DESC",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -1557,6 +1616,20 @@
               "defaultValue": null
             },
             {
+              "name": "accounts",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
               "name": "clientMutationId",
               "description": null,
               "type": {
@@ -1695,6 +1768,22 @@
               "deprecationReason": null
             },
             {
+              "name": "accounts",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "_id",
               "description": null,
               "args": [],
@@ -1751,6 +1840,20 @@
                 "kind": "SCALAR",
                 "name": "String",
                 "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "accounts",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "defaultValue": null
             },
@@ -1959,6 +2062,16 @@
               "defaultValue": null
             },
             {
+              "name": "toAka",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "amount",
               "description": null,
               "type": {
@@ -1999,11 +2112,11 @@
               "defaultValue": null
             },
             {
-              "name": "date",
+              "name": "dueDate",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "ID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null
@@ -2147,6 +2260,18 @@
               "deprecationReason": null
             },
             {
+              "name": "toAka",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "amount",
               "description": null,
               "args": [],
@@ -2195,12 +2320,12 @@
               "deprecationReason": null
             },
             {
-              "name": "date",
+              "name": "dueDate",
               "description": null,
               "args": [],
               "type": {
-                "kind": "OBJECT",
-                "name": "date",
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2267,6 +2392,16 @@
               "defaultValue": null
             },
             {
+              "name": "toAka",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "amount",
               "description": null,
               "type": {
@@ -2307,11 +2442,11 @@
               "defaultValue": null
             },
             {
-              "name": "date",
+              "name": "dueDate",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "ID",
+                "name": "String",
                 "ofType": null
               },
               "defaultValue": null

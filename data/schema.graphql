@@ -1,11 +1,12 @@
 input addTransferInput {
   from: String
   to: String
+  toAka: String
   amount: Float
   currency: String
   status: String
   communication: String
-  date: ID
+  dueDate: String
   clientMutationId: String!
 }
 
@@ -18,6 +19,7 @@ type addTransferPayload {
 input addUserInput {
   firstName: String
   lastName: String
+  accounts: [String]
   clientMutationId: String!
 }
 
@@ -35,11 +37,12 @@ type changedTransferEdge {
 type changedTransferNode {
   from: String
   to: String
+  toAka: String
   amount: Float
   currency: String
   status: String
   communication: String
-  date: date
+  dueDate: String
   _id: ID
   id: ID!
 }
@@ -52,15 +55,10 @@ type changedUserEdge {
 type changedUserNode {
   firstName: String
   lastName: String
+  accounts: [String]
   _id: ID
   id: ID!
 }
-
-type date {
-  due: Date
-}
-
-scalar Date
 
 input deleteTransferInput {
   id: ID!
@@ -95,6 +93,8 @@ enum orderByTransfer {
   FROM_DESC
   TO_ASC
   TO_DESC
+  TOAKA_ASC
+  TOAKA_DESC
   AMOUNT_ASC
   AMOUNT_DESC
   CURRENCY_ASC
@@ -103,6 +103,8 @@ enum orderByTransfer {
   STATUS_DESC
   COMMUNICATION_ASC
   COMMUNICATION_DESC
+  DUEDATE_ASC
+  DUEDATE_DESC
   _ID_ASC
   _ID_DESC
 }
@@ -138,17 +140,18 @@ type RootQuery {
   user(id: ID!): User
   users(id: [ID], ids: [ID], orderBy: orderByUser, firstName: String, lastName: String, _id: ID): [User]
   transfer(id: ID!): Transfer
-  transfers(id: [ID], ids: [ID], orderBy: orderByTransfer, from: String, to: String, amount: Float, currency: String, status: String, communication: String, _id: ID): [Transfer]
+  transfers(id: [ID], ids: [ID], orderBy: orderByTransfer, from: String, to: String, toAka: String, amount: Float, currency: String, status: String, communication: String, dueDate: String, _id: ID): [Transfer]
 }
 
 type Transfer implements Node {
   from: String
   to: String
+  toAka: String
   amount: Float
   currency: String
   status: String
   communication: String
-  date: date
+  dueDate: String
   _id: ID
   id: ID!
 }
@@ -167,11 +170,12 @@ type TransferEdge {
 input updateTransferInput {
   from: String
   to: String
+  toAka: String
   amount: Float
   currency: String
   status: String
   communication: String
-  date: ID
+  dueDate: String
   id: ID!
   clientMutationId: String!
 }
@@ -184,6 +188,7 @@ type updateTransferPayload {
 input updateUserInput {
   firstName: String
   lastName: String
+  accounts: [String]
   id: ID!
   clientMutationId: String!
 }
@@ -196,6 +201,7 @@ type updateUserPayload {
 type User implements Node {
   firstName: String
   lastName: String
+  accounts: [String]
   _id: ID
   id: ID!
 }
@@ -215,6 +221,6 @@ type Viewer implements Node {
   id: ID!
   users(after: String, first: Int, before: String, last: Int, orderBy: orderByUser, firstName: String, lastName: String, _id: ID): UserConnection
   user(id: ID!): User
-  transfers(after: String, first: Int, before: String, last: Int, orderBy: orderByTransfer, from: String, to: String, amount: Float, currency: String, status: String, communication: String, _id: ID): TransferConnection
+  transfers(after: String, first: Int, before: String, last: Int, orderBy: orderByTransfer, from: String, to: String, toAka: String, amount: Float, currency: String, status: String, communication: String, dueDate: String, _id: ID): TransferConnection
   transfer(id: ID!): Transfer
 }
